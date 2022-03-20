@@ -53,7 +53,10 @@ export default function ListItem({ option }: Props) {
 	`;
 
 	return (
-		<ListItem onClick={() => dispatch(updateCurrentLog(option))}>
+		<ListItem
+			onClick={() => {
+				// dispatch(updateCurrentLog(option));
+			}}>
 			<div className='list-item-type-color'></div>
 			<div className='list-item-content'>
 				<div className='list-item-summary'>

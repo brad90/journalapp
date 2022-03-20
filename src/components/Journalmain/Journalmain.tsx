@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import store from '../../redux/store';
+import { RootState } from '../../redux/store';
+// import store from '../../redux/store';
 
 export default function Journalmain(currentLog: any) {
 	const [isValid, setIsValid] = useState<boolean>(true);
@@ -9,7 +10,10 @@ export default function Journalmain(currentLog: any) {
 	const userTitle = useRef<string>('');
 	const userText = useRef<string>('');
 
-	const currentlog = store.getState().currentLog;
+	// const currentlog = store.getState().currentLog;
+
+	const currentlog = useSelector((state: RootState) => state.currentLog);
+	console.log({ currentLog });
 
 	const JournalMain = styled.div`
 		display: flex;
@@ -86,6 +90,8 @@ export default function Journalmain(currentLog: any) {
 		console.log(payload);
 	};
 
+	if (!currentLog) return <p>no logs</p>;
+
 	return (
 		<JournalMain>
 			<div className='main-container'>
@@ -93,22 +99,9 @@ export default function Journalmain(currentLog: any) {
 					<p>{wordCount.current}/500</p>
 				</div>
 				<div className='text-area'>
-					<input
-						type='text'
-						placeholder='Title'
-						maxLength={35}
-						onChange={(e) => handleTitleInput(e.target.value)}
-						value={currentlog.title ? currentlog.title : ''}
-						disabled={currentlog.title ? true : false}
-					/>
+					<input type='text' placeholder='Title' maxLength={35} onChange={(e) => handleTitleInput(e.target.value)} />
 					{userTitle.current}
-					<textarea
-						onChange={(e) => handleTextInput(e.target.value)}
-						required
-						placeholder='Start Typing ...'
-						value={currentlog.text ? currentlog.text : ''}
-						disabled={currentlog.text ? true : false}
-					/>
+					<textarea onChange={(e) => handleTextInput(e.target.value)} required placeholder='Start Typing ...' />
 					<div className='complete'>
 						<button className='btn' onClick={() => handleCompletion()}>
 							Complete

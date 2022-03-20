@@ -8,11 +8,11 @@ import { BrowserRouter } from 'react-router-dom';
 
 // REDUX
 import { Provider } from 'react-redux';
-import store from './redux/store';
-import { updateCurrentLog } from './redux/actions';
+import { store } from './redux/store';
+// import { updateCurrentLog } from './redux/actions';
 
 window.store = store;
-window.updateCurrentLog = updateCurrentLog;
+// window.updateCurrentLog = updateCurrentLog;
 
 ReactDOM.render(
 	<Provider store={store}>

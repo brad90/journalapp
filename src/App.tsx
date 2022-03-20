@@ -2,10 +2,10 @@ import React from 'react';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 
-import Landing from './views/Landing/Landing';
-import Login from './views/Login/Login';
-import JournalLogs from './views/Journal/Logs/Logs';
-import Dashboard from './views/Dashboard/Dashboard';
+import Landing from './features/Landing/Landing';
+import Login from './features/Login/Login';
+import JournalLogs from './features/Journal/Journal';
+import Dashboard from './features/Dashboard/Dashboard';
 import Layout from './components/Layout/Layout';
 
 function App() {
