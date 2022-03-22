@@ -5,15 +5,13 @@ import JounralMain from '../../components/Journalmain/Journalmain';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export default function Journal() {
-	const [activeOption, setActiveOption] = useState({});
-
 	const JournlContainer = styled.div`
 		display: flex;
 	`;
 
 	return (
 		<JournlContainer>
-			<JournalSidebar callBack={() => console.log('hello')} />
+			<JournalSidebar />
 			<JounralMain />
 		</JournlContainer>
 	);
